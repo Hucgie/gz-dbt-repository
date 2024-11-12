@@ -7,9 +7,45 @@ sources:
       - name: sales
         identifier: raw_gz_sales
         description: Sales data from the raw dataset
+        columns:
+        - name: date_date
+          description: date of purchase
+        - name: orders_id
+          description: orders_id of purchase
+        - name: products_id
+          description: products_id of product
+        - name: revenue
+          description: revenue of purchase      
+        - name: quantity
+          description: quantity in stock
+
       - name: product 
         identifier: raw_gz_product 
         description:  product data from the raw dataset
+        columns:
+        - name: products_id
+          description: products_id of product
+          tests:
+          - unique           # Ensures each `product_id` is unique
+          - not_null         # Ensures no `product_id` is null
+
+        - name: purchase_price
+          description: price of purchase  
       - name : ship
         identifier: raw_gz_ship
-        description:  sip data from the raw dataset
+        description:  ship data from the raw dataset
+        columns:
+        - name: orders_id
+          description: orders_id of shipping
+          tests:
+          - unique           # Ensures each `shipment_id` is unique
+          - not_null         # Ensures no `shipment_id` is null
+        - name: shipping_fee
+          description: fee of ship  
+        - name: shipping_fee_1
+          description: fee_1 of ship    
+        - name: logcost
+          description: logcost of ship  
+        - name: ship_cost
+          description: ship_cost of ship 
+           
