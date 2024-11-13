@@ -11,10 +11,10 @@ renamed as (
     select
         date_date,
         orders_id,
-        pdt_id,
+        pdt_id as products_id,
         revenue,
-        quantity
-
+        quantity,
+        CONCAT(orders_id,"_",pdt_id) AS sales_id        
     from source
 
 )
